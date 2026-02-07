@@ -23,6 +23,15 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* Hide all scrollbars globally */
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
         /* Header */
         .site-header {
             text-align: center;
@@ -44,181 +53,6 @@
             font-weight: 300;
             max-width: 500px;
             margin: 0 auto;
-        }
-
-        /* ── Calibrator Section ── */
-        .calibrator-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 28px 24px 0;
-        }
-
-        .calibrator-card {
-            border: 1px solid #eee;
-            border-radius: 16px;
-            padding: 24px 28px;
-            background: #fcfcfc;
-        }
-
-        .calibrator-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .calibrator-header h3 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .calibrator-header h3 .icon {
-            font-size: 1.1rem;
-        }
-
-        .calibrator-toggle-label {
-            font-size: 0.7rem;
-            color: #aaa;
-            font-weight: 500;
-        }
-
-        .calibrator-body {
-            display: none;
-            padding-top: 20px;
-        }
-
-        .calibrator-body.open {
-            display: block;
-        }
-
-        .calibrator-instructions {
-            font-size: 0.78rem;
-            color: #888;
-            margin-bottom: 18px;
-            line-height: 1.7;
-        }
-
-        .calibrator-instructions strong {
-            color: #555;
-        }
-
-        .ruler-container {
-            position: relative;
-            height: 60px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 16px;
-        }
-
-        .ruler-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .calibrator-controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .calibrator-controls label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .calibrator-slider {
-            flex: 1;
-            min-width: 150px;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 6px;
-            background: #e5e5e5;
-            border-radius: 3px;
-            outline: none;
-        }
-
-        .calibrator-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #111;
-            cursor: pointer;
-            border: 3px solid #fff;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        }
-
-        .calibrator-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #111;
-            cursor: pointer;
-            border: 3px solid #fff;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        }
-
-        .ppm-display {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #333;
-            min-width: 90px;
-            text-align: center;
-        }
-
-        .lock-btn {
-            padding: 9px 22px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .lock-btn.unlocked {
-            background: #111;
-            color: #fff;
-        }
-
-        .lock-btn.unlocked:hover {
-            background: #333;
-        }
-
-        .lock-btn.locked {
-            background: #16a34a;
-            color: #fff;
-        }
-
-        .lock-btn.locked:hover {
-            background: #15803d;
-        }
-
-        .calibration-status {
-            margin-top: 14px;
-            font-size: 0.72rem;
-            color: #16a34a;
-            font-weight: 500;
-            display: none;
-        }
-
-        .calibration-status.show {
-            display: block;
         }
 
         /* Filters */
@@ -326,20 +160,13 @@
             }
         }
 
-        /* Watch Card */
+        /* Watch Card — static, no hover lift */
         .watch-card {
             background: #fff;
             border: 1px solid #eee;
             border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            cursor: pointer;
-        }
-
-        .watch-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 8px 20px rgba(0,0,0,0.04);
         }
 
         .watch-card.hidden {
@@ -347,21 +174,21 @@
         }
 
         .card-image-wrap {
-            background: #fafafa;
-            padding: 20px 16px;
+            background: #f7f7f7;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 340px;
+            height: 320px;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .card-image-wrap img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
-            transition: height 0.3s ease, width 0.3s ease;
         }
 
         .card-checkbox-wrap {
@@ -374,18 +201,20 @@
         .card-checkbox-wrap input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            border: 2px solid #ccc;
+            width: 26px;
+            height: 26px;
+            border: 2px solid rgba(180,180,180,0.7);
             border-radius: 6px;
-            background: #fff;
+            background: rgba(255,255,255,0.85);
             cursor: pointer;
             transition: all 0.2s ease;
             position: relative;
+            backdrop-filter: blur(4px);
         }
 
         .card-checkbox-wrap input[type="checkbox"]:hover {
             border-color: #999;
+            background: #fff;
         }
 
         .card-checkbox-wrap input[type="checkbox"]:checked {
@@ -423,6 +252,32 @@
 
         .card-body {
             padding: 20px 24px 24px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .card-body:hover {
+            background: #fcfcfc;
+        }
+
+        .card-body-hint {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.6rem;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-body-hint svg {
+            width: 12px;
+            height: 12px;
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 2;
         }
 
         .card-series {
@@ -438,14 +293,6 @@
             font-size: 1.05rem;
             font-weight: 600;
             color: #111;
-            margin-bottom: 2px;
-        }
-
-        .card-nickname {
-            font-size: 0.8rem;
-            color: #888;
-            font-weight: 400;
-            font-style: italic;
             margin-bottom: 6px;
         }
 
@@ -506,6 +353,18 @@
             margin-bottom: 8px;
         }
 
+        .card-price {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #16a34a;
+            background: #f0fdf4;
+            padding: 3px 10px;
+            border-radius: 100px;
+            margin-bottom: 8px;
+            margin-left: 6px;
+        }
+
         /* Compare Bar */
         .compare-bar {
             position: fixed;
@@ -558,7 +417,7 @@
             font-weight: 700;
         }
 
-        /* Modal Overlay */
+        /* Modal Overlay (shared) */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -626,6 +485,7 @@
             align-items: center;
             justify-content: center;
             transition: background 0.2s;
+            flex-shrink: 0;
         }
 
         .modal-close:hover {
@@ -668,19 +528,18 @@
             color: #111;
         }
 
-        .compare-table thead .th-nickname {
-            font-size: 0.7rem;
-            color: #999;
-            font-style: italic;
-            font-weight: 400;
-        }
-
         .compare-table tbody tr {
             border-bottom: 1px solid #f3f3f3;
         }
 
         .compare-table tbody tr:last-child {
             border-bottom: none;
+        }
+
+        .compare-table tbody tr.section-divider td,
+        .compare-table tbody tr.section-divider th {
+            padding-top: 20px;
+            border-bottom: 2px solid #eee;
         }
 
         .compare-table tbody th {
@@ -718,6 +577,162 @@
             max-width: 200px;
         }
 
+        /* Detail toggle in compare */
+        .detail-toggle-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .detail-toggle-wrap label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #ddd;
+            border-radius: 24px;
+            transition: 0.3s;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: #111;
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(20px);
+        }
+
+        /* ── Detail Specs Modal ── */
+        .detail-modal {
+            max-width: 560px;
+        }
+
+        .detail-modal .modal-body {
+            padding: 0 32px 32px;
+        }
+
+        .detail-watch-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 4px;
+        }
+
+        .detail-watch-header img {
+            width: 90px;
+            height: 110px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .detail-watch-header-info {
+            flex: 1;
+        }
+
+        .detail-watch-header-info .series-tag {
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #aaa;
+        }
+
+        .detail-watch-header-info .model-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111;
+            margin: 2px 0 4px;
+        }
+
+        .detail-watch-header-info .price-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #16a34a;
+        }
+
+        .detail-section {
+            padding: 16px 0 0;
+        }
+
+        .detail-section-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #bbb;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 8px 0;
+            border-bottom: 1px solid #fafafa;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-row-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #999;
+            white-space: nowrap;
+            margin-right: 16px;
+        }
+
+        .detail-row-value {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #333;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .detail-row-value.green {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
         /* ── Shopkeeper Overlay ── */
         .shopkeeper-overlay {
             position: fixed;
@@ -732,6 +747,7 @@
             visibility: hidden;
             transition: opacity 0.25s ease, visibility 0.25s ease;
             padding: 24px;
+            overflow: hidden;
         }
 
         .shopkeeper-overlay.open {
@@ -755,7 +771,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
-            z-index: 2;
+            z-index: 10;
         }
 
         .shopkeeper-close:hover {
@@ -763,14 +779,47 @@
             border-color: #aaa;
         }
 
+        .shopkeeper-zoom-hint {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #ccc;
+            font-weight: 500;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .shopkeeper-image-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .shopkeeper-image-container:active {
+            cursor: grabbing;
+        }
+
         .shopkeeper-image {
-            max-width: 70vw;
-            max-height: 60vh;
+            max-width: 75vw;
+            max-height: 70vh;
             object-fit: contain;
+            transform-origin: center center;
+            transition: transform 0.1s ease-out;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         .shopkeeper-model {
-            margin-top: 28px;
+            margin-top: 20px;
             font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 900;
             color: #000;
@@ -778,17 +827,8 @@
             text-align: center;
         }
 
-        .shopkeeper-subtitle {
-            margin-top: 8px;
-            font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-            font-weight: 400;
-            color: #888;
-            font-style: italic;
-            text-align: center;
-        }
-
         .shopkeeper-dims {
-            margin-top: 12px;
+            margin-top: 8px;
             font-size: clamp(0.8rem, 2vw, 1.1rem);
             font-weight: 500;
             color: #bbb;
@@ -826,6 +866,9 @@
                 padding: 16px 12px 24px;
                 overflow-x: auto;
             }
+            .detail-modal .modal-body {
+                padding: 0 16px 24px;
+            }
             .compare-table th,
             .compare-table td {
                 padding: 10px 8px;
@@ -839,18 +882,24 @@
                 font-size: 0.7rem;
             }
             .card-image-wrap {
-                height: 300px;
-            }
-            .calibrator-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .ppm-display {
-                text-align: left;
+                height: 280px;
             }
             .shopkeeper-image {
-                max-width: 85vw;
-                max-height: 55vh;
+                max-width: 90vw;
+                max-height: 60vh;
+            }
+            .shopkeeper-image-container {
+                height: 60vh;
+            }
+            .detail-watch-header {
+                gap: 14px;
+            }
+            .detail-watch-header img {
+                width: 70px;
+                height: 90px;
+            }
+            .detail-watch-header-info .model-name {
+                font-size: 1rem;
             }
         }
 
@@ -863,12 +912,6 @@
             font-size: 1rem;
             font-weight: 400;
         }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #bbb; }
     </style>
 </head>
 <body>
@@ -878,31 +921,6 @@
         <h1>Casio Watch Showcase</h1>
         <p>A curated collection of 10 watches, compared by the specs that matter most.</p>
     </header>
-
-    <!-- Calibrator -->
-    <div class="calibrator-section">
-        <div class="calibrator-card">
-            <div class="calibrator-header" onclick="toggleCalibrator()">
-                <h3><span class="icon">📏</span> 1:1 Physical Scale Calibrator</h3>
-                <span class="calibrator-toggle-label" id="calibToggleLabel">Tap to open</span>
-            </div>
-            <div class="calibrator-body" id="calibratorBody">
-                <div class="calibrator-instructions">
-                    <strong>How it works:</strong> Hold a real ruler against your screen. Drag the slider until the on-screen ruler markings line up exactly with your physical ruler. Then hit <strong>Lock Calibration</strong>. All watch images will resize to match their real-world lug-to-lug height.
-                </div>
-                <div class="ruler-container">
-                    <canvas class="ruler-canvas" id="rulerCanvas"></canvas>
-                </div>
-                <div class="calibrator-controls">
-                    <label for="ppmSlider">Adjust Scale</label>
-                    <input type="range" class="calibrator-slider" id="ppmSlider" min="1.5" max="8" step="0.01" value="3.78">
-                    <span class="ppm-display" id="ppmDisplay">3.78 px/mm</span>
-                    <button class="lock-btn unlocked" id="lockBtn" onclick="toggleLock()">Lock Calibration</button>
-                </div>
-                <div class="calibration-status" id="calibStatus">✓ Calibration locked — all watch images are now at 1:1 physical scale.</div>
-            </div>
-        </div>
-    </div>
 
     <!-- Filters -->
     <div class="filters-bar">
@@ -956,109 +974,245 @@
         </div>
     </div>
 
-    <!-- Shopkeeper Overlay -->
-    <div class="shopkeeper-overlay" id="shopkeeperOverlay" onclick="closeShopkeeper(event)">
+    <!-- Detail Specs Modal -->
+    <div class="modal-overlay" id="detailOverlay" onclick="closeDetail(event)">
+        <div class="modal detail-modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>Full Specifications</h2>
+                <button class="modal-close" onclick="closeDetail()">&times;</button>
+            </div>
+            <div class="modal-body" id="detailBody"></div>
+        </div>
+    </div>
+
+    <!-- Shopkeeper Overlay (no zoom buttons — scroll/pinch only) -->
+    <div class="shopkeeper-overlay" id="shopkeeperOverlay">
         <button class="shopkeeper-close" onclick="closeShopkeeper()">&times;</button>
-        <img class="shopkeeper-image" id="shopkeeperImg" src="" alt="">
+        <div class="shopkeeper-image-container" id="shopkeeperContainer">
+            <img class="shopkeeper-image" id="shopkeeperImg" src="" alt="" draggable="false">
+        </div>
         <div class="shopkeeper-model" id="shopkeeperModel"></div>
-        <div class="shopkeeper-subtitle" id="shopkeeperSubtitle"></div>
         <div class="shopkeeper-dims" id="shopkeeperDims"></div>
+        <div class="shopkeeper-zoom-hint" id="shopkeeperHint">Scroll to zoom · Drag to pan</div>
     </div>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer-copy">© 2026 Anirudh Gupta. All rights reserved.</div>
+        <div class="footer-copy">&copy; 2026 Anirudh Gupta. All rights reserved.</div>
         <div class="footer-note">This is a temporary website generated with the help of AI, built solely for personal watch comparison purposes. Not affiliated with Casio or any retailer.</div>
     </footer>
 
 <script>
+// ══════════════════════════════════════
+// DATA — "(incl. of all taxes)" removed from all prices
+// ══════════════════════════════════════
 const watches = [
     {
-        id: 1, model: "EFV-640D-1AV", nickname: 'The "Perfect Fit" — Black',
+        id: 1, model: "EFV-640D-1AV",
         series: "Edifice", color: "Black",
         lugToLug: 47.0, caseWidth: 44.3, thickness: 10.8, weight: 136,
         waterResistance: "100m",
         features: "Octagonal \"CasiOak\" Bezel, 1/10-sec High-Speed Stopwatch, Luminous Hands/Markers.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-640d-1av/assets/EFV-640D-1AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-640d-1av/assets/EFV-640D-1AVU.png",
+        detail: {
+            price: "MRP ₹ 8,995",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "—",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1/10-second stopwatch; Measuring capacity: 59'59.9''; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (stopwatch 1/10 seconds, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 2, model: "EFV-640D-2AV", nickname: 'The "Perfect Fit" — Blue',
+        id: 2, model: "EFV-640D-2AV",
         series: "Edifice", color: "Blue",
         lugToLug: 47.0, caseWidth: 44.3, thickness: 10.8, weight: 136,
         waterResistance: "100m",
         features: "Electric Blue Dial, Octagonal Bezel, 1/10-sec High-Speed Stopwatch.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-640d-2av/assets/EFV-640D-2AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-640d-2av/assets/EFV-640D-2AVU.png",
+        detail: {
+            price: "MRP ₹ 8,995",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "—",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1/10-second stopwatch; Measuring capacity: 59'59.9''; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (stopwatch 1/10 seconds, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 3, model: "EFV-650D-1AV", nickname: "Modern Minimalist — Black",
+        id: 3, model: "EFV-650D-1AV",
         series: "Edifice", color: "Black",
         lugToLug: 48.6, caseWidth: 43.5, thickness: 11.0, weight: 128,
         waterResistance: "100m",
         features: "Integrated Lugs, Clean Bezel, Modern Dial layout.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-650d-1av/assets/EFV-650D-1AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-650d-1av/assets/EFV-650D-1AVU.png",
+        detail: {
+            price: "MRP ₹ 9,995",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1-second stopwatch; Measuring capacity: 59'59; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (24-hour, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 4, model: "EFV-650D-2AV", nickname: "Modern Minimalist — Blue",
+        id: 4, model: "EFV-650D-2AV",
         series: "Edifice", color: "Blue",
         lugToLug: 48.6, caseWidth: 43.5, thickness: 11.0, weight: 128,
         waterResistance: "100m",
         features: "Deep Royal Blue Dial, Lightweight fit for thin wrists.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-650d-2av/assets/EFV-650D-2AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-650d-2av/assets/EFV-650D-2AVU.png",
+        detail: {
+            price: "MRP ₹ 9,995",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1-second stopwatch; Measuring capacity: 59'59; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (24-hour, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 5, model: "EFV-650D-3AV", nickname: "Modern Minimalist — Green",
+        id: 5, model: "EFV-650D-3AV",
         series: "Edifice", color: "Green",
         lugToLug: 48.6, caseWidth: 43.5, thickness: 11.0, weight: 128,
         waterResistance: "100m",
         features: "Trendy Dark Green Dial, Modern aesthetics.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-650d-3av/assets/EFV-650D-3AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFV/efv-650d-3av/assets/EFV-650D-3AVU.png",
+        detail: {
+            price: "MRP ₹ 9,995",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1-second stopwatch; Measuring capacity: 59'59; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (24-hour, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 6, model: "EFR-526D-5CV", nickname: "Classic Racer — Burgundy",
+        id: 6, model: "EFR-526D-5CV",
         series: "Edifice", color: "Burgundy",
         lugToLug: 48.5, caseWidth: 43.8, thickness: 11.6, weight: 149,
         waterResistance: "100m",
-        features: 'Unique "Oxblood" Color, Solid Links, 1/10-sec Stopwatch.',
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-526d-5cv/assets/EFR-526D-5CVU.png"
+        features: "Unique \"Oxblood\" Color, Solid Links, 1/10-sec Stopwatch.",
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-526d-5cv/assets/EFR-526D-5CVU.png",
+        detail: {
+            price: "MRP ₹ 8,495",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp, Solid Band",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1/10-second stopwatch; Measuring capacity: 59'59.9''; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (stopwatch 1/10 seconds, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 7, model: "EFR-526D-2AV", nickname: "Classic Racer — Blue",
+        id: 7, model: "EFR-526D-2AV",
         series: "Edifice", color: "Blue",
         lugToLug: 48.5, caseWidth: 43.8, thickness: 11.6, weight: 149,
         waterResistance: "100m",
         features: "Classic Sport look, Solid Links.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-526d-2av/assets/EFR-526D-2AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-526d-2av/assets/EFR-526D-2AVU.png",
+        detail: {
+            price: "MRP ₹ 8,495",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp, Solid Band",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1/10-second stopwatch; Measuring capacity: 59'59.9''; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (stopwatch 1/10 seconds, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 8, model: "EFR-526D-3AV", nickname: "Classic Racer — Green",
+        id: 8, model: "EFR-526D-3AV",
         series: "Edifice", color: "Green",
         lugToLug: 48.5, caseWidth: 43.8, thickness: 11.6, weight: 149,
         waterResistance: "100m",
         features: "Youthful/Trendy Green, Solid Links, High-Speed Dial.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-526d-3av/assets/EFR-526D-3AVU.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/E/EF/EFR/efr-526d-3av/assets/EFR-526D-3AVU.png",
+        detail: {
+            price: "MRP ₹ 8,495",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp, Solid Band",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1/10-second stopwatch; Measuring capacity: 59'59.9''; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (stopwatch 1/10 seconds, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 9, model: "MTP-E510D-1A1V", nickname: "The Stealth Pro",
+        id: 9, model: "MTP-E510D-1A1V",
         series: "Enticer", color: "Black",
         lugToLug: 47.5, caseWidth: 42.0, thickness: 10.5, weight: 119,
         waterResistance: "50m",
-        features: '1/10-sec High-Speed Stopwatch (Rare for Enticer), All-Black "Tech" look.',
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/M/MT/MTP/mtp-e510d-1a1v/assets/MTP-E510D-1A1V.png"
+        features: "1/10-sec High-Speed Stopwatch (Rare for Enticer), All-Black \"Tech\" look.",
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/M/MT/MTP/mtp-e510d-1a1v/assets/MTP-E510D-1A1V.png",
+        detail: {
+            price: "MRP ₹ 8,495",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 3 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "Screw Lock Back",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1/10-second stopwatch; Measuring capacity: 59'59.9''; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (stopwatch 1/10 seconds, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     },
     {
-        id: 10, model: "MTP-E515D-2A1V", nickname: "The Hidden Gem",
+        id: 10, model: "MTP-E515D-2A1V",
         series: "Enticer", color: "Blue",
         lugToLug: 48.0, caseWidth: 41.0, thickness: 10.6, weight: 116,
         waterResistance: "50m",
         features: "Unique Teal/Turquoise Dial, Slim Profile, 24-Hour Sub-dial.",
-        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/M/MT/MTP/mtp-e515d-2a1v/assets/MTP-E515D-2A1V.png"
+        image: "https://www.casio.com/content/dam/casio/product-info/locales/in/en/timepiece/product/watch/M/MT/MTP/mtp-e515d-2a1v/assets/MTP-E515D-2A1V.png",
+        detail: {
+            price: "MRP ₹ 8,495",
+            caseMaterial: "Stainless steel",
+            band: "Stainless Steel Band, One-touch 3-fold Clasp",
+            powerSupply: "Approx. battery life: 2 years on SR920SW",
+            glass: "Mineral Glass",
+            backPlate: "—",
+            bandSize: "150 to 205 mm",
+            stopwatch: "1-second stopwatch; Measuring capacity: 59'59; Modes: Elapsed time, split time, 1st-2nd place times.",
+            timekeeping: "Analog (3 hands); 3 dials (24-hour, stopwatch minutes, stopwatch seconds).",
+            otherFeatures: "Date display; Accuracy: ±20 seconds per month."
+        }
     }
 ];
 
-// ── Size Classification ──
-// Composite score: normalize lug-to-lug, thickness, weight then average
+// ══════════════════════════════════════
+// SIZE CLASSIFICATION
+// ══════════════════════════════════════
 function classifySize(w) {
-    // Ranges across our 10 watches
     const lugMin = 47.0, lugMax = 48.6;
     const thkMin = 10.5, thkMax = 11.6;
     const wgtMin = 116, wgtMax = 149;
@@ -1079,132 +1233,22 @@ watches.forEach(w => {
     w.dimensions = `${w.lugToLug} × ${w.caseWidth} × ${w.thickness} mm`;
 });
 
+// ══════════════════════════════════════
+// STATE
+// ══════════════════════════════════════
 let activeFilters = { series: 'all', color: 'all', size: 'all' };
 let selectedIds = new Set();
-let calibrationLocked = false;
-let currentPPM = 3.78;
 
-// ── Calibrator ──
-function toggleCalibrator() {
-    const body = document.getElementById('calibratorBody');
-    const label = document.getElementById('calibToggleLabel');
-    body.classList.toggle('open');
-    label.textContent = body.classList.contains('open') ? 'Tap to close' : 'Tap to open';
-    if (body.classList.contains('open')) {
-        drawRuler();
-    }
-}
-
-function drawRuler() {
-    const canvas = document.getElementById('rulerCanvas');
-    const container = canvas.parentElement;
-    const dpr = window.devicePixelRatio || 1;
-
-    canvas.width = container.clientWidth * dpr;
-    canvas.height = container.clientHeight * dpr;
-    canvas.style.width = container.clientWidth + 'px';
-    canvas.style.height = container.clientHeight + 'px';
-
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-
-    const w = container.clientWidth;
-    const h = container.clientHeight;
-
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, w, h);
-
-    const ppm = currentPPM;
-    const totalMM = Math.floor(w / ppm);
-
-    for (let mm = 0; mm <= totalMM; mm++) {
-        const x = mm * ppm;
-        let tickH;
-
-        if (mm % 10 === 0) {
-            tickH = h * 0.6;
-            ctx.fillStyle = '#333';
-            ctx.font = `600 ${Math.max(9, ppm * 2.2)}px Inter, sans-serif`;
-            ctx.textAlign = 'center';
-            const label = (mm / 10).toString();
-            ctx.fillText(label, x, h - tickH - 4);
-        } else if (mm % 5 === 0) {
-            tickH = h * 0.4;
-        } else {
-            tickH = h * 0.22;
-        }
-
-        ctx.fillStyle = mm % 10 === 0 ? '#333' : mm % 5 === 0 ? '#888' : '#ccc';
-        ctx.fillRect(x - 0.5, h - tickH, 1, tickH);
-    }
-
-    // Bottom line
-    ctx.fillStyle = '#ddd';
-    ctx.fillRect(0, h - 1, w, 1);
-}
-
-document.getElementById('ppmSlider').addEventListener('input', function() {
-    if (calibrationLocked) return;
-    currentPPM = parseFloat(this.value);
-    document.getElementById('ppmDisplay').textContent = currentPPM.toFixed(2) + ' px/mm';
-    drawRuler();
-});
-
-function toggleLock() {
-    const btn = document.getElementById('lockBtn');
-    const status = document.getElementById('calibStatus');
-    const slider = document.getElementById('ppmSlider');
-
-    if (!calibrationLocked) {
-        calibrationLocked = true;
-        btn.textContent = 'Unlock';
-        btn.className = 'lock-btn locked';
-        status.classList.add('show');
-        slider.disabled = true;
-        applyCalibration();
-    } else {
-        calibrationLocked = false;
-        btn.textContent = 'Lock Calibration';
-        btn.className = 'lock-btn unlocked';
-        status.classList.remove('show');
-        slider.disabled = false;
-        removeCalibration();
-    }
-}
-
-function applyCalibration() {
-    document.querySelectorAll('.card-image-wrap img[data-lug]').forEach(img => {
-        const lug = parseFloat(img.getAttribute('data-lug'));
-        const realHeightPx = lug * currentPPM;
-        img.style.height = realHeightPx + 'px';
-        img.style.maxHeight = 'none';
-        img.style.width = 'auto';
-        img.style.maxWidth = '100%';
-    });
-}
-
-function removeCalibration() {
-    document.querySelectorAll('.card-image-wrap img[data-lug]').forEach(img => {
-        img.style.height = '';
-        img.style.maxHeight = '100%';
-        img.style.width = '';
-        img.style.maxWidth = '100%';
-    });
-}
-
-window.addEventListener('resize', () => {
-    if (document.getElementById('calibratorBody').classList.contains('open')) {
-        drawRuler();
-    }
-});
-
-// ── Perfect fit check ──
+// ══════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════
 function isPerfectFit(lug) {
     return lug <= 47.0;
 }
 
-// ── Render cards ──
+// ══════════════════════════════════════
+// RENDER CARDS
+// ══════════════════════════════════════
 function renderCards() {
     const grid = document.getElementById('watchGrid');
     grid.innerHTML = '';
@@ -1224,7 +1268,6 @@ function renderCards() {
     filtered.forEach(w => {
         const lugClass = isPerfectFit(w.lugToLug) ? ' perfect-fit' : '';
         const checked = selectedIds.has(w.id) ? 'checked' : '';
-
         const sizeBadgeClass = w.sizeClass === 'Compact' ? 'compact' : w.sizeClass === 'Mid' ? 'mid' : 'large';
 
         const card = document.createElement('div');
@@ -1237,12 +1280,15 @@ function renderCards() {
                     <input type="checkbox" ${checked} title="Select for comparison" onchange="toggleSelect(${w.id}, this.checked)">
                 </div>
                 <span class="card-size-badge ${sizeBadgeClass}">${w.sizeClass}</span>
-                <img src="${w.image}" alt="${w.model}" loading="lazy" data-lug="${w.lugToLug}">
+                <img src="${w.image}" alt="${w.model}" loading="lazy">
             </div>
-            <div class="card-body" onclick="openShopkeeper(${w.id})">
+            <div class="card-body" onclick="openDetail(${w.id})">
+                <div class="card-body-hint">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Tap for full specs
+                </div>
                 <div class="card-series">${w.series}</div>
                 <div class="card-model">${w.model}</div>
-                <div class="card-nickname">${w.nickname}</div>
                 <div class="card-dimensions">${w.dimensions}</div>
                 <div class="card-specs">
                     <div class="spec-item">
@@ -1259,20 +1305,18 @@ function renderCards() {
                     </div>
                 </div>
                 <span class="card-wr">${w.waterResistance} WR</span>
+                <span class="card-price">${w.detail.price.replace('MRP ', '')}</span>
                 <div class="card-features">${w.features}</div>
             </div>
         `;
 
         grid.appendChild(card);
     });
-
-    // Re-apply calibration if locked
-    if (calibrationLocked) {
-        applyCalibration();
-    }
 }
 
-// ── Filters ──
+// ══════════════════════════════════════
+// FILTERS
+// ══════════════════════════════════════
 function setFilter(type, value, btn) {
     activeFilters[type] = value;
 
@@ -1283,7 +1327,9 @@ function setFilter(type, value, btn) {
     renderCards();
 }
 
-// ── Selection ──
+// ══════════════════════════════════════
+// SELECTION / COMPARE BAR
+// ══════════════════════════════════════
 function toggleSelect(id, checked) {
     if (checked) {
         selectedIds.add(id);
@@ -1305,11 +1351,19 @@ function updateCompareBar() {
     }
 }
 
-// ── Compare Modal ──
+// ══════════════════════════════════════
+// COMPARE MODAL
+// ══════════════════════════════════════
 function openCompare() {
     const selected = watches.filter(w => selectedIds.has(w.id));
     if (selected.length < 2) return;
 
+    document.getElementById('modalBody').innerHTML = buildCompareHTML(selected, false);
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function buildCompareHTML(selected, showDetailed) {
     const minLug = Math.min(...selected.map(w => w.lugToLug));
     const minThickness = Math.min(...selected.map(w => w.thickness));
     const minWeight = Math.min(...selected.map(w => w.weight));
@@ -1320,13 +1374,13 @@ function openCompare() {
             <th>
                 <img src="${w.image}" alt="${w.model}">
                 <div class="th-model">${w.model}</div>
-                <div class="th-nickname">${w.nickname}</div>
             </th>
         `;
     });
 
-    const specs = [
+    const basicSpecs = [
         { label: 'Series', key: 'series' },
+        { label: 'Price', key: null, custom: w => w.detail.price },
         { label: 'Dimensions', key: 'dimensions' },
         { label: 'Lug-to-Lug', key: 'lugToLug', suffix: ' mm', best: minLug, perfectCheck: true },
         { label: 'Case Width', key: 'caseWidth', suffix: ' mm' },
@@ -1337,11 +1391,30 @@ function openCompare() {
         { label: 'Features', key: 'features', isFeature: true }
     ];
 
+    const detailedSpecs = [
+        { label: '', divider: true },
+        { label: 'Case / Bezel', key: null, custom: w => w.detail.caseMaterial },
+        { label: 'Band', key: null, custom: w => w.detail.band, isFeature: true },
+        { label: 'Glass', key: null, custom: w => w.detail.glass },
+        { label: 'Back Plate', key: null, custom: w => w.detail.backPlate },
+        { label: 'Band Size', key: null, custom: w => w.detail.bandSize },
+        { label: 'Battery', key: null, custom: w => w.detail.powerSupply, isFeature: true },
+        { label: 'Stopwatch', key: null, custom: w => w.detail.stopwatch, isFeature: true },
+        { label: 'Timekeeping', key: null, custom: w => w.detail.timekeeping, isFeature: true },
+        { label: 'Other', key: null, custom: w => w.detail.otherFeatures, isFeature: true }
+    ];
+
+    const specs = showDetailed ? [...basicSpecs, ...detailedSpecs] : basicSpecs;
+
     let bodyRows = '';
     specs.forEach(spec => {
+        if (spec.divider) {
+            bodyRows += `<tr class="section-divider"><th colspan="${selected.length + 1}" style="font-size:0.6rem;color:#aaa;padding-top:24px;text-transform:uppercase;letter-spacing:2px;">Detailed Specifications</th></tr>`;
+            return;
+        }
         let row = `<th>${spec.label}</th>`;
         selected.forEach(w => {
-            const val = w[spec.key];
+            const val = spec.custom ? spec.custom(w) : w[spec.key];
             let cls = '';
             if (spec.perfectCheck && isPerfectFit(val)) {
                 cls = ' class="perfect-fit"';
@@ -1357,16 +1430,26 @@ function openCompare() {
         bodyRows += `<tr>${row}</tr>`;
     });
 
-    const html = `
+    const checkedAttr = showDetailed ? 'checked' : '';
+
+    return `
+        <div class="detail-toggle-wrap">
+            <label class="toggle-switch">
+                <input type="checkbox" ${checkedAttr} onchange="toggleDetailedCompare(this.checked)">
+                <span class="toggle-slider"></span>
+            </label>
+            <label onclick="document.querySelector('.detail-toggle-wrap input').click()">Show detailed specifications</label>
+        </div>
         <table class="compare-table">
             <thead><tr>${headerCols}</tr></thead>
             <tbody>${bodyRows}</tbody>
         </table>
     `;
+}
 
-    document.getElementById('modalBody').innerHTML = html;
-    document.getElementById('modalOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
+function toggleDetailedCompare(showDetailed) {
+    const selected = watches.filter(w => selectedIds.has(w.id));
+    document.getElementById('modalBody').innerHTML = buildCompareHTML(selected, showDetailed);
 }
 
 function closeCompare(e) {
@@ -1375,36 +1458,275 @@ function closeCompare(e) {
     document.body.style.overflow = '';
 }
 
-// ── Shopkeeper Overlay ──
+// ══════════════════════════════════════
+// DETAIL SPECS MODAL
+// ══════════════════════════════════════
+function openDetail(id) {
+    const w = watches.find(x => x.id === id);
+    if (!w) return;
+
+    const d = w.detail;
+    const lugClass = isPerfectFit(w.lugToLug) ? ' green' : '';
+
+    const html = `
+        <div class="detail-watch-header">
+            <img src="${w.image}" alt="${w.model}">
+            <div class="detail-watch-header-info">
+                <div class="series-tag">${w.series}</div>
+                <div class="model-name">${w.model}</div>
+                <div class="price-tag">${d.price}</div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Dimensions & Weight</div>
+            <div class="detail-row">
+                <span class="detail-row-label">Case Size (L×W×H)</span>
+                <span class="detail-row-value">${w.dimensions}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Lug-to-Lug</span>
+                <span class="detail-row-value${lugClass}">${w.lugToLug} mm</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Case Width</span>
+                <span class="detail-row-value">${w.caseWidth} mm</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Thickness</span>
+                <span class="detail-row-value">${w.thickness} mm</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Weight</span>
+                <span class="detail-row-value">${w.weight}g</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Size Class</span>
+                <span class="detail-row-value">${w.sizeClass}</span>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Construction</div>
+            <div class="detail-row">
+                <span class="detail-row-label">Case / Bezel</span>
+                <span class="detail-row-value">${d.caseMaterial}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Band</span>
+                <span class="detail-row-value">${d.band}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Glass</span>
+                <span class="detail-row-value">${d.glass}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Back Plate</span>
+                <span class="detail-row-value">${d.backPlate}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Band Size</span>
+                <span class="detail-row-value">${d.bandSize}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Water Resistance</span>
+                <span class="detail-row-value">${w.waterResistance}</span>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Movement & Functions</div>
+            <div class="detail-row">
+                <span class="detail-row-label">Power Supply</span>
+                <span class="detail-row-value">${d.powerSupply}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Stopwatch</span>
+                <span class="detail-row-value">${d.stopwatch}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Timekeeping</span>
+                <span class="detail-row-value">${d.timekeeping}</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-row-label">Other Features</span>
+                <span class="detail-row-value">${d.otherFeatures}</span>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Highlights</div>
+            <div class="detail-row">
+                <span class="detail-row-value" style="text-align:left;color:#777;font-size:0.78rem;line-height:1.6;">${w.features}</span>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('detailBody').innerHTML = html;
+    document.getElementById('detailOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDetail(e) {
+    if (e && e.target !== document.getElementById('detailOverlay')) return;
+    document.getElementById('detailOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// ══════════════════════════════════════
+// SHOPKEEPER OVERLAY (scroll wheel + pinch/drag only, no buttons)
+// ══════════════════════════════════════
+let shopZoom = 1;
+let shopPanX = 0;
+let shopPanY = 0;
+let shopDragging = false;
+let shopLastX = 0;
+let shopLastY = 0;
+let shopPinchDist = 0;
+
 function openShopkeeper(id) {
     const w = watches.find(x => x.id === id);
     if (!w) return;
 
-    document.getElementById('shopkeeperImg').src = w.image;
-    document.getElementById('shopkeeperImg').alt = w.model;
+    shopZoom = 1;
+    shopPanX = 0;
+    shopPanY = 0;
+
+    const img = document.getElementById('shopkeeperImg');
+    img.src = w.image;
+    img.alt = w.model;
+    applyShopTransform();
+
     document.getElementById('shopkeeperModel').textContent = w.model;
-    document.getElementById('shopkeeperSubtitle').textContent = w.nickname;
     document.getElementById('shopkeeperDims').textContent = w.dimensions;
     document.getElementById('shopkeeperOverlay').classList.add('open');
+    document.getElementById('shopkeeperHint').style.opacity = '1';
     document.body.style.overflow = 'hidden';
+
+    // Hide hint after 3s
+    setTimeout(() => {
+        const hint = document.getElementById('shopkeeperHint');
+        if (hint) hint.style.opacity = '0';
+    }, 3000);
 }
 
-function closeShopkeeper(e) {
-    if (e && e.target && e.target !== document.getElementById('shopkeeperOverlay') && !e.target.classList.contains('shopkeeper-close')) return;
+function closeShopkeeper() {
     document.getElementById('shopkeeperOverlay').classList.remove('open');
     document.body.style.overflow = '';
 }
 
-// ── Keyboard ──
+function applyShopTransform() {
+    const img = document.getElementById('shopkeeperImg');
+    img.style.transform = `translate(${shopPanX}px, ${shopPanY}px) scale(${shopZoom})`;
+}
+
+// Mouse drag
+const shopContainer = document.getElementById('shopkeeperContainer');
+
+shopContainer.addEventListener('mousedown', e => {
+    if (shopZoom <= 1) return;
+    shopDragging = true;
+    shopLastX = e.clientX;
+    shopLastY = e.clientY;
+    e.preventDefault();
+});
+
+window.addEventListener('mousemove', e => {
+    if (!shopDragging) return;
+    shopPanX += e.clientX - shopLastX;
+    shopPanY += e.clientY - shopLastY;
+    shopLastX = e.clientX;
+    shopLastY = e.clientY;
+    applyShopTransform();
+});
+
+window.addEventListener('mouseup', () => {
+    shopDragging = false;
+});
+
+// Scroll wheel zoom
+shopContainer.addEventListener('wheel', e => {
+    e.preventDefault();
+    const dir = e.deltaY < 0 ? 1 : -1;
+    shopZoom = Math.max(0.5, Math.min(6, shopZoom + dir * 0.3));
+    if (shopZoom <= 1) { shopPanX = 0; shopPanY = 0; }
+    applyShopTransform();
+}, { passive: false });
+
+// Touch: pinch to zoom + drag
+shopContainer.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        shopPinchDist = Math.sqrt(dx * dx + dy * dy);
+    } else if (e.touches.length === 1 && shopZoom > 1) {
+        shopDragging = true;
+        shopLastX = e.touches[0].clientX;
+        shopLastY = e.touches[0].clientY;
+    }
+}, { passive: true });
+
+shopContainer.addEventListener('touchmove', e => {
+    if (e.touches.length === 2) {
+        e.preventDefault();
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const delta = dist - shopPinchDist;
+        shopZoom = Math.max(0.5, Math.min(6, shopZoom + delta * 0.01));
+        shopPinchDist = dist;
+        if (shopZoom <= 1) { shopPanX = 0; shopPanY = 0; }
+        applyShopTransform();
+    } else if (e.touches.length === 1 && shopDragging) {
+        e.preventDefault();
+        shopPanX += e.touches[0].clientX - shopLastX;
+        shopPanY += e.touches[0].clientY - shopLastY;
+        shopLastX = e.touches[0].clientX;
+        shopLastY = e.touches[0].clientY;
+        applyShopTransform();
+    }
+}, { passive: false });
+
+shopContainer.addEventListener('touchend', () => {
+    shopDragging = false;
+});
+
+// Double-tap to zoom toggle
+let lastTap = 0;
+shopContainer.addEventListener('touchend', e => {
+    const now = Date.now();
+    if (now - lastTap < 300) {
+        if (shopZoom > 1) {
+            shopZoom = 1;
+            shopPanX = 0;
+            shopPanY = 0;
+        } else {
+            shopZoom = 2.5;
+        }
+        applyShopTransform();
+    }
+    lastTap = now;
+});
+
+// ══════════════════════════════════════
+// KEYBOARD
+// ══════════════════════════════════════
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-        document.getElementById('modalOverlay').classList.remove('open');
-        document.getElementById('shopkeeperOverlay').classList.remove('open');
+        if (document.getElementById('shopkeeperOverlay').classList.contains('open')) {
+            closeShopkeeper();
+        } else if (document.getElementById('detailOverlay').classList.contains('open')) {
+            closeDetail();
+        } else if (document.getElementById('modalOverlay').classList.contains('open')) {
+            closeCompare();
+        }
         document.body.style.overflow = '';
     }
 });
 
-// ── Init ──
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
 renderCards();
 </script>
 
