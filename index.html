@@ -233,12 +233,13 @@
             font-weight: 700;
         }
 
+        /* Size badges — muted, subtle */
         .card-size-badge {
             position: absolute;
             top: 14px;
             left: 14px;
             font-size: 0.6rem;
-            font-weight: 700;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 4px 10px;
@@ -246,9 +247,18 @@
             z-index: 3;
         }
 
-        .card-size-badge.compact { background: #dbeafe; color: #1d4ed8; }
-        .card-size-badge.mid { background: #fef3c7; color: #92400e; }
-        .card-size-badge.large { background: #fce7f3; color: #9d174d; }
+        .card-size-badge.compact {
+            background: #f0f0f0;
+            color: #888;
+        }
+        .card-size-badge.mid {
+            background: #f0f0f0;
+            color: #888;
+        }
+        .card-size-badge.large {
+            background: #f0f0f0;
+            color: #888;
+        }
 
         .card-body {
             padding: 20px 24px 24px;
@@ -330,10 +340,6 @@
             color: #333;
         }
 
-        .spec-value.perfect-fit {
-            color: #16a34a;
-        }
-
         .card-features {
             font-size: 0.75rem;
             color: #999;
@@ -353,12 +359,13 @@
             margin-bottom: 8px;
         }
 
+        /* Price badge — neutral grey, not green */
         .card-price {
             display: inline-block;
             font-size: 0.65rem;
             font-weight: 600;
-            color: #16a34a;
-            background: #f0fdf4;
+            color: #888;
+            background: #f5f5f5;
             padding: 3px 10px;
             border-radius: 100px;
             margin-bottom: 8px;
@@ -514,9 +521,10 @@
             padding-bottom: 16px;
         }
 
+        /* Bigger images in compare modal */
         .compare-table thead th img {
-            width: 100px;
-            height: 120px;
+            width: 140px;
+            height: 170px;
             object-fit: contain;
             display: block;
             margin: 0 auto 10px;
@@ -557,11 +565,6 @@
             font-size: 0.85rem;
             font-weight: 500;
             color: #333;
-        }
-
-        .compare-table tbody td.perfect-fit {
-            color: #16a34a;
-            font-weight: 700;
         }
 
         .compare-table tbody td.best-value {
@@ -682,7 +685,7 @@
         .detail-watch-header-info .price-tag {
             font-size: 0.85rem;
             font-weight: 600;
-            color: #16a34a;
+            color: #555;
         }
 
         .detail-section {
@@ -726,11 +729,6 @@
             color: #333;
             text-align: right;
             line-height: 1.5;
-        }
-
-        .detail-row-value.green {
-            color: #16a34a;
-            font-weight: 600;
         }
 
         /* ── Shopkeeper Overlay ── */
@@ -875,8 +873,8 @@
                 font-size: 0.75rem;
             }
             .compare-table thead th img {
-                width: 60px;
-                height: 80px;
+                width: 80px;
+                height: 100px;
             }
             .compare-table thead .th-model {
                 font-size: 0.7rem;
@@ -985,7 +983,7 @@
         </div>
     </div>
 
-    <!-- Shopkeeper Overlay (no zoom buttons — scroll/pinch only) -->
+    <!-- Shopkeeper Overlay (scroll/pinch only) -->
     <div class="shopkeeper-overlay" id="shopkeeperOverlay">
         <button class="shopkeeper-close" onclick="closeShopkeeper()">&times;</button>
         <div class="shopkeeper-image-container" id="shopkeeperContainer">
@@ -1004,7 +1002,7 @@
 
 <script>
 // ══════════════════════════════════════
-// DATA — "(incl. of all taxes)" removed from all prices
+// DATA
 // ══════════════════════════════════════
 const watches = [
     {
@@ -1240,13 +1238,6 @@ let activeFilters = { series: 'all', color: 'all', size: 'all' };
 let selectedIds = new Set();
 
 // ══════════════════════════════════════
-// HELPERS
-// ══════════════════════════════════════
-function isPerfectFit(lug) {
-    return lug <= 47.0;
-}
-
-// ══════════════════════════════════════
 // RENDER CARDS
 // ══════════════════════════════════════
 function renderCards() {
@@ -1266,7 +1257,6 @@ function renderCards() {
     }
 
     filtered.forEach(w => {
-        const lugClass = isPerfectFit(w.lugToLug) ? ' perfect-fit' : '';
         const checked = selectedIds.has(w.id) ? 'checked' : '';
         const sizeBadgeClass = w.sizeClass === 'Compact' ? 'compact' : w.sizeClass === 'Mid' ? 'mid' : 'large';
 
@@ -1293,7 +1283,7 @@ function renderCards() {
                 <div class="card-specs">
                     <div class="spec-item">
                         <div class="spec-label">Lug-to-Lug</div>
-                        <div class="spec-value${lugClass}">${w.lugToLug} mm</div>
+                        <div class="spec-value">${w.lugToLug} mm</div>
                     </div>
                     <div class="spec-item">
                         <div class="spec-label">Thickness</div>
@@ -1382,7 +1372,7 @@ function buildCompareHTML(selected, showDetailed) {
         { label: 'Series', key: 'series' },
         { label: 'Price', key: null, custom: w => w.detail.price },
         { label: 'Dimensions', key: 'dimensions' },
-        { label: 'Lug-to-Lug', key: 'lugToLug', suffix: ' mm', best: minLug, perfectCheck: true },
+        { label: 'Lug-to-Lug', key: 'lugToLug', suffix: ' mm', best: minLug },
         { label: 'Case Width', key: 'caseWidth', suffix: ' mm' },
         { label: 'Thickness', key: 'thickness', suffix: ' mm', best: minThickness },
         { label: 'Weight', key: 'weight', suffix: 'g', best: minWeight },
@@ -1416,9 +1406,7 @@ function buildCompareHTML(selected, showDetailed) {
         selected.forEach(w => {
             const val = spec.custom ? spec.custom(w) : w[spec.key];
             let cls = '';
-            if (spec.perfectCheck && isPerfectFit(val)) {
-                cls = ' class="perfect-fit"';
-            } else if (spec.best !== undefined && val === spec.best && selected.length > 1) {
+            if (spec.best !== undefined && val === spec.best && selected.length > 1) {
                 cls = ' class="best-value"';
             }
             if (spec.isFeature) {
@@ -1466,7 +1454,6 @@ function openDetail(id) {
     if (!w) return;
 
     const d = w.detail;
-    const lugClass = isPerfectFit(w.lugToLug) ? ' green' : '';
 
     const html = `
         <div class="detail-watch-header">
@@ -1486,7 +1473,7 @@ function openDetail(id) {
             </div>
             <div class="detail-row">
                 <span class="detail-row-label">Lug-to-Lug</span>
-                <span class="detail-row-value${lugClass}">${w.lugToLug} mm</span>
+                <span class="detail-row-value">${w.lugToLug} mm</span>
             </div>
             <div class="detail-row">
                 <span class="detail-row-label">Case Width</span>
@@ -1574,7 +1561,7 @@ function closeDetail(e) {
 }
 
 // ══════════════════════════════════════
-// SHOPKEEPER OVERLAY (scroll wheel + pinch/drag only, no buttons)
+// SHOPKEEPER OVERLAY (scroll wheel + pinch/drag only)
 // ══════════════════════════════════════
 let shopZoom = 1;
 let shopPanX = 0;
